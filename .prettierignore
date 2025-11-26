@@ -1,4 +1,5 @@
-#Prettier will follow rules specified in .gitignore if it exists in the same directory from which it is run.
+# Prettier will follow rules specified in .gitignore if it exists in the same directory from which it is run.
+# To ignore files, add them to the file. Example: To ignore HTML files, add *.html.
 
 # Ignore artifacts:
 build
