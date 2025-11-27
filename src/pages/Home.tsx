@@ -9,8 +9,11 @@ function Home() {
                 <div className="my-10">
                     <div className="flex flex-col gap-20">
                         <Statistics />
+                        <div className="mx-20 dui-divider"></div>
                         <Equipment />
+                        <div className="mx-20 dui-divider"></div>
                         <Goals />
+                        <div className="mx-20 dui-divider"></div>
                         <Actions />
                     </div>
                 </div>
