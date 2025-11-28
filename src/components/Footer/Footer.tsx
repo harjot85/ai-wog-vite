@@ -37,7 +37,7 @@ export const Footer = () => {
                         <h4 className="text-xl">
                             AI Powered workout generator
                         </h4>
-                        Aiming to help people
+                        Take control of your health.
                     </div>
                 </aside>
                 <nav className="md:place-self-center md:justify-self-end">
