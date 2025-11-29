@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { FaHeart } from 'react-icons/fa6';
 
-export const Footer = () => {
+const Footer = () => {
     const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
     const endpoint = '/api/health';
 
@@ -73,3 +73,5 @@ export const Footer = () => {
         </>
     );
 };
+
+export default Footer;

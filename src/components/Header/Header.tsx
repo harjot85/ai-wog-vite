@@ -1,9 +1,42 @@
+import { Link } from 'react-router';
+
 function Header() {
     return (
-        <div className="mt-2 py-10 bg-primary">
-            <div className="flex justify-center">
-                <div className="text-3xl font-bold text-accent-content">
-                    AI Powered Health Assistant
+        <div className="dui-navbar bg-primary text-primary-content">
+            <div className="flex-1">
+                <Link
+                    to={'/'}
+                    className="dui-btn dui-btn-ghost text-xl hover:bg-base-100 p-6"
+                >
+                    AI Powered Fitness Coach
+                </Link>
+            </div>
+            <div className="flex-none">
+                <div className="dui-dropdown dui-dropdown-end ">
+                    <div
+                        tabIndex={0}
+                        role="button"
+                        className="dui-btn dui-btn-ghost dui-btn-circle dui-avatar "
+                    >
+                        <div className="w-10 rounded-full">
+                            <img
+                                alt="Navbar"
+                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                            />
+                        </div>
+                    </div>
+                    <ul
+                        tabIndex={-1}
+                        className="dui-menu dui-menu-sm dui-dropdown-content bg-primary text-primary-content dui-rounded-box z-1 mt-3 w-52 p-1 shadow"
+                    >
+                        <li className="hover:bg-base-100 hover:text-base-content rounded-xl ">
+                            <Link to={'/user-profile'}>My Profile</Link>
+                        </li>
+
+                        <li className="hover:bg-base-100 hover:text-base-content rounded-xl">
+                            <a>Logout</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
