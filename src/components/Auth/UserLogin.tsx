@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 function UserLogin() {
     const [email, setEmail] = useState('');
@@ -10,26 +10,28 @@ function UserLogin() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        navigate('/fitness-plan');
+        navigate('/');
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
-            <div className="card w-full max-w-md bg-base-100 shadow-xl">
+        <div className="min-h-screen flex items-center justify-center bg-base-100 p-10">
+            <div className="card w-full max-w-xl bg-base-100 p-10 outline-1 outline-primary-content shadow-2xl">
                 <div className="card-body">
-                    <h2 className="card-title text-3xl font-bold justify-center mb-6">
+                    <h2 className="card-title text-3xl font-bold justify-center mb-6 text-center">
                         Login
                     </h2>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="form-control">
-                            <label className="dui-label">
-                                <span className="dui-label-text">Email</span>
+                            <label className="dui-label p-1">
+                                <span className="dui-label-text text-lg">
+                                    Email
+                                </span>
                             </label>
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="dui-input dui-input-bordered w-full"
+                                className="dui-input dui-input-lg dui-input-bordered w-full"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
@@ -37,20 +39,22 @@ function UserLogin() {
                         </div>
 
                         <div className="form-control">
-                            <label className="dui-label">
-                                <span className="dui-label-text">Password</span>
+                            <label className="dui-label p-1">
+                                <span className="dui-label-text text-lg">
+                                    Password
+                                </span>
                             </label>
                             <input
                                 type="password"
                                 placeholder="Enter your password"
-                                className="dui-input dui-input-bordered w-full"
+                                className="dui-input dui-input-lg dui-input-bordered w-full"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
                         </div>
 
-                        <div className="form-control mt-6">
+                        <div className="form-control mt-10">
                             <button
                                 type="submit"
                                 className="dui-btn dui-btn-primary w-full"
@@ -60,7 +64,9 @@ function UserLogin() {
                         </div>
                     </form>
 
-                    <div className="divider">OR</div>
+                    <div className="divider divider-primary text-center mt-5">
+                        OR
+                    </div>
 
                     <div className="text-center space-y-2">
                         <a href="#" className="link link-primary text-sm">
@@ -68,9 +74,9 @@ function UserLogin() {
                         </a>
                         <div className="text-sm">
                             Don't have an account?{' '}
-                            <a href="#" className="link link-primary">
+                            <Link to="/register" className="link link-primary">
                                 Sign up
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

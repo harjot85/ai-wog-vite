@@ -18,12 +18,7 @@ function Header() {
                         role="button"
                         className="dui-btn dui-btn-ghost dui-btn-circle dui-avatar "
                     >
-                        <div className="w-10 rounded-full">
-                            <img
-                                alt="Navbar"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                            />
-                        </div>
+                        <div className="w-10 rounded-full bg-primary-content"></div>
                     </div>
                     <ul
                         tabIndex={-1}
