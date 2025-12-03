@@ -7,7 +7,7 @@ function UserLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { mutate: loginUser, isPending } = useUserLogin();
+    const { mutate: loginUser } = useUserLogin();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
