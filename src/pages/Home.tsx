@@ -1,3 +1,6 @@
+import Equipment from '../components/User/Equipment/Equipment';
+import Goals from '../components/User/Goals/Goals';
+
 function Home() {
     return (
         <div className="flex flex-col min-h-screen">
@@ -17,33 +20,6 @@ function Home() {
 }
 
 export default Home;
-
-const Equipment = () => {
-    return (
-        <div className="flex flex-col gap-4 items-center justify-center">
-            <label className="dui-label">
-                <span className="dui-label">What Equipment do you have</span>
-            </label>
-            <input
-                name="equipment"
-                type="text"
-                placeholder=""
-                className="dui-input"
-            />
-        </div>
-    );
-};
-
-const Goals = () => {
-    return (
-        <div className="flex flex-col gap-4 items-center justify-center">
-            <label className="dui-label">
-                <span className="dui-label">What are your Goals?</span>
-            </label>
-            <textarea name="goals" placeholder="" className="dui-textarea " />
-        </div>
-    );
-};
 
 const Actions = () => {
     return (
