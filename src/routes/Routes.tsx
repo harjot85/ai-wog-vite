@@ -7,6 +7,10 @@ import UserRegistration from '../components/Auth/UserRegistration';
 
 const router = createBrowserRouter([
     {
+        path: '/',
+        element: <Login />,
+    },
+    {
         path: '/login',
         element: <Login />,
     },
@@ -18,9 +22,7 @@ const router = createBrowserRouter([
         element: <RootLayout />,
         children: [
             {
-                // temporary
-                path: '/',
-                //path: "/fitness-plan",
+                path: '/home',
                 element: <Home />,
             },
             {
