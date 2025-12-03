@@ -1,16 +1,29 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
+import { useUserLogin } from '../../hooks/useUserLogin';
+import { toast } from 'react-toastify';
 
 function UserLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    let navigate = useNavigate();
+    const { mutate: loginUser, isPending } = useUserLogin();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        navigate('/');
+        loginUser(
+            { email, password },
+            {
+                onSuccess: () => {
+                    console.log('Login successful');
+                },
+                onError: (error) => {
+                    console.error('Login failed', error);
+                    toast.error('Login failed');
+                },
+            }
+        );
     };
 
     return (

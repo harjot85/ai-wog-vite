@@ -17,4 +17,19 @@ export const api = {
 
         return response.json();
     },
+
+    get: async (endpoint: string) => {
+        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`API Error: ${response.statusText}`);
+        }
+
+        return response.json();
+    },
 };

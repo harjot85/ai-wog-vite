@@ -14,8 +14,11 @@ export const useRegistration = () => {
         mutationFn: (data: RegistrationData) =>
             api.post('/api/v1/auth/register', data),
         onSuccess: (data) => {
-            localStorage.setItem('token', data.token);
+            console.log('Registration successful', data);
             navigate('/login');
+        },
+        onError: (error) => {
+            console.error('Registration failed', error);
         },
     });
 };
