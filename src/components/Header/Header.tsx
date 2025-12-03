@@ -1,6 +1,11 @@
 import { Link } from 'react-router';
 
 function Header() {
+    const user = localStorage.getItem('user');
+    const userData = user ? JSON.parse(user) : null;
+
+    const userInitial = userData ? userData.name.charAt(0).toUpperCase() : '';
+
     return (
         <div className="dui-navbar bg-primary text-primary-content">
             <div className="flex-1">
@@ -18,7 +23,9 @@ function Header() {
                         role="button"
                         className="dui-btn dui-btn-ghost dui-btn-circle dui-avatar "
                     >
-                        <div className="w-10 rounded-full bg-primary-content"></div>
+                        <div className="w-10 rounded-full bg-primary-content text-primary flex justify-center items-center text-lg">
+                            {userInitial}
+                        </div>
                     </div>
                     <ul
                         tabIndex={-1}
