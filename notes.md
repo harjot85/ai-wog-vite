@@ -1,21 +1,15 @@
 Next
 ----
-Create User Profile Page (Separate some fields like Stats (maybe Equipment as well?)) from WO generation
-BE will need to be upadted as well
-hard-code Stats for now
 
-Tables:
- User (FK - UserProfile, Equipment) 
- UserProfile
- Equipment 
- ~Goals
 
 TODOs:
 ===================================================
-Create Login Page | Register Page | Forgot Password 
 
-Login Flow with JWT
-1 role for now - User
+- Forgot Password 
 
-WO Generation Page
+- Login Flow with JWT. 1 role for now - User
+
+- User Logs in with email/pass. API authenticates and returns token with id 
+
+- We use the id to send next request to get the user profile
 
