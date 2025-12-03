@@ -4,7 +4,7 @@ function Header() {
     const user = localStorage.getItem('user');
     const userData = user ? JSON.parse(user) : null;
 
-    const userInitial = userData ? userData.name.charAt(0).toUpperCase() : '';
+    const userInitial = userData ? userData?.name?.charAt(0).toUpperCase() : '';
 
     return (
         <div className="dui-navbar bg-primary text-primary-content">

@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router';
 import { useUserLogin } from '../../hooks/useUserLogin';
 import { toast } from 'react-toastify';
+import { useUserProfile } from '../../hooks/useUserProfile';
 
 function UserLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const { mutate: loginUser } = useUserLogin();
+    const { mutate: fetchUserProfile } = useUserProfile();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -15,8 +17,8 @@ function UserLogin() {
         loginUser(
             { email, password },
             {
-                onSuccess: () => {
-                    console.log('Login successful');
+                onSuccess: (userId) => {
+                    fetchUserProfile(Number(userId));
                 },
                 onError: (error) => {
                     console.error('Login failed', error);
