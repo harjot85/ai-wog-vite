@@ -15,7 +15,7 @@ export const api = {
             throw new Error(`API Error: ${response.statusText}`);
         }
 
-        return response.json();
+        return 'Success';
     },
 
     get: async (endpoint: string) => {

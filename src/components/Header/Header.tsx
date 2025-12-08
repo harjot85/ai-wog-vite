@@ -10,7 +10,7 @@ function Header() {
         <div className="dui-navbar bg-primary text-primary-content">
             <div className="flex-1">
                 <Link
-                    to={'/'}
+                    to={'/home'}
                     className="dui-btn dui-btn-ghost text-xl hover:bg-base-100 p-6"
                 >
                     AI Powered Fitness Coach

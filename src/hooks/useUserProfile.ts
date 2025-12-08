@@ -23,7 +23,8 @@ export const useUserProfile = () => {
     const navigate = useNavigate();
 
     return useMutation({
-        mutationFn: (userId: number) => api.get(`/api/v1/user/${userId}`),
+        mutationFn: (userId: number) =>
+            api.get(`/api/v1/user/${userId}/profile`),
         onSuccess: (data: User) => {
             console.log('User profile fetched successfully', data);
             localStorage.setItem('user', JSON.stringify(data));
