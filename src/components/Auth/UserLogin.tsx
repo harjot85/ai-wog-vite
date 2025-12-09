@@ -17,8 +17,10 @@ function UserLogin() {
         loginUser(
             { email, password },
             {
-                onSuccess: (userId) => {
-                    fetchUserProfile(Number(userId));
+                // When login succeeds, this callback gets the "data" returned from our login API.
+                // "data" is what was returned from the server in response to `/api/v1/auth/login`.
+                onSuccess: (data) => {
+                    fetchUserProfile(Number(data.userId));
                 },
                 onError: (error) => {
                     console.error('Login failed', error);

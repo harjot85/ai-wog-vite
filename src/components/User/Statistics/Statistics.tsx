@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useInsertProfile } from '../../../hooks/useInsertProfile';
 import { toast } from 'react-toastify';
+import { useUserProfileStore } from '../../../store/UserProfileStore';
 
 interface StatisticsFormData {
     age: string;
@@ -14,30 +16,53 @@ interface StatisticsFormData {
 }
 
 const Statistics = () => {
+    const defaultValues = {
+        age: '',
+        weight: '',
+        height: '',
+        gender: '',
+        experienceLevel: '',
+        profession: '',
+        physicalLimitations: '',
+    };
+
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
         setValue,
-    } = useForm<StatisticsFormData>();
+    } = useForm<StatisticsFormData>({ defaultValues });
     const { mutate: insertProfile, isPending } = useInsertProfile();
 
-    // Get userId from localStorage
-    const getUser = () => {
-        const userStr = localStorage.getItem('user');
-        if (userStr) {
-            try {
-                return JSON.parse(userStr);
-            } catch {
-                return null;
-            }
+    const userProfile = useUserProfileStore((state) => state.userProfile);
+
+    useEffect(() => {
+        const stats = userProfile?.statistics;
+        if (!stats) {
+            return;
         }
-        return null;
-    };
+
+        const dateOfBirthYear = stats.dateOfBirth
+            ? new Date(stats.dateOfBirth).getFullYear()
+            : null;
+        const currentYear = new Date().getFullYear();
+        const age = dateOfBirthYear ? currentYear - dateOfBirthYear : '';
+
+        reset({
+            age: age?.toString() ?? '',
+            weight: stats.weightInLbs?.toString() ?? '',
+            height: stats.heightInInches?.toString() ?? '',
+            gender: stats.biologicalSex ?? '',
+            experienceLevel: stats.experienceLevel ?? '',
+            profession: stats.profession ?? '',
+            physicalLimitations: stats.chronicPhysicalLimitations ?? '',
+            medicalIssues: stats.medicalIssues ?? '',
+        });
+    }, [reset, userProfile?.statistics]);
 
     const onSubmit = (data: StatisticsFormData) => {
-        const user = getUser();
-        if (!user || !user.id) {
+        if (!userProfile?.id) {
             toast.error('User not found. Please log in again.');
             return;
         }
@@ -73,7 +98,7 @@ const Statistics = () => {
 
         insertProfile(
             {
-                userId: user.id,
+                userId: userProfile?.id,
                 dateOfBirth,
                 weightInLbs,
                 heightInInches,
