@@ -1,6 +1,7 @@
 Next
 ----
-- Need some Global state to know who the User is. Currently we rely on local Storage
+- Revise Statistics - Update, Insert, Fetch, Hydration 
+- Plan Generation
 
 TODOs
 ===================================================
@@ -11,7 +12,7 @@ TODOs
 
 Done
 ===================================================
-
+- Added Global state - zustand
 - User Stats can now be saved. 
 - User Logs in with email/pass. API authenticates and returns token with id 
 - We use the id to send next request to get the user profile

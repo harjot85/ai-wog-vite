@@ -110,11 +110,11 @@ const Statistics = () => {
             },
             {
                 onSuccess: () => {
-                    toast.success('Profile inserted successfully!');
+                    toast.success('Profile saved successfully!');
                 },
                 onError: (error: unknown) => {
-                    toast.error('Failed to insert profile. Please try again.');
-                    console.error('Insert profile error:', error);
+                    toast.error('Failed to save profile. Please try again.');
+                    console.error('Save profile error:', error);
                 },
             }
         );
@@ -301,7 +301,7 @@ const Statistics = () => {
                 className="dui-btn dui-btn-primary w-full mt-4"
                 disabled={isPending}
             >
-                {isPending ? 'Inserting...' : 'Insert Profile'}
+                {isPending ? 'Saving...' : 'Save Profile'}
             </button>
         </form>
     );

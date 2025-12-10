@@ -1,10 +1,19 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { useAuthStore } from '../../store/AuthStore';
 
 function Header() {
     const user = localStorage.getItem('user');
     const userData = user ? JSON.parse(user) : null;
 
     const userInitial = userData ? userData?.name?.charAt(0).toUpperCase() : '';
+
+    const navigate = useNavigate();
+    const logout = useAuthStore((state) => state.logout);
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
 
     return (
         <div className="dui-navbar bg-primary text-primary-content">
@@ -36,7 +45,9 @@ function Header() {
                         </li>
 
                         <li className="hover:bg-base-100 hover:text-base-content rounded-xl">
-                            <a>Logout</a>
+                            <Link to={'/login'} onClick={handleLogout}>
+                                Logout
+                            </Link>
                         </li>
                     </ul>
                 </div>

@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useUserProfileStore } from './UserProfileStore';
 
 interface User {
     userId: number;
@@ -26,11 +27,13 @@ export const useAuthStore = create<AuthState>()(
                     isAuthenticated: true,
                 }),
 
-            logout: () =>
+            logout: () => {
+                useUserProfileStore.getState().clearUserProfile();
                 set({
                     user: null,
                     isAuthenticated: false,
-                }),
+                });
+            },
         }),
         {
             name: 'auth-storage',
