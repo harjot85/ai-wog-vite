@@ -13,8 +13,8 @@ export const useRegistration = () => {
     return useMutation({
         mutationFn: (data: RegistrationData) =>
             api.post('/api/v1/user/register', data),
-        onSuccess: (data) => {
-            console.log('Registration successful', data);
+        onSuccess: () => {
+            console.log('Registration successful');
             navigate('/login');
         },
         onError: (error) => {

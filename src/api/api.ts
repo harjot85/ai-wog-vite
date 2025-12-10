@@ -15,9 +15,7 @@ export const api = {
             throw new Error(`API Error: ${response.statusText}`);
         }
 
-        const responseData = await response.json();
-
-        return responseData;
+        return parseResponse(response);
     },
 
     get: async (endpoint: string) => {
@@ -32,6 +30,16 @@ export const api = {
             throw new Error(`API Error: ${response.statusText}`);
         }
 
-        return response.json();
+        return parseResponse(response);
     },
+};
+
+const parseResponse = async (response: Response) => {
+    const text = await response.text();
+    if (!text) return null;
+    try {
+        return JSON.parse(text);
+    } catch {
+        return null;
+    }
 };

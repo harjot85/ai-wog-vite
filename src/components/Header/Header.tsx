@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router';
 import { useAuthStore } from '../../store/AuthStore';
+import { useUserProfileStore } from '../../store/UserProfileStore';
 
 function Header() {
-    const user = localStorage.getItem('user');
-    const userData = user ? JSON.parse(user) : null;
+    const userProfile = useUserProfileStore((state) => state.userProfile);
 
-    const userInitial = userData ? userData?.name?.charAt(0).toUpperCase() : '';
+    const userInitial = userProfile?.name?.charAt(0).toUpperCase();
 
     const navigate = useNavigate();
     const logout = useAuthStore((state) => state.logout);
