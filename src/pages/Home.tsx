@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Equipment from '../components/User/Equipment/Equipment';
 import WorkoutParameters from '../components/User/WorkoutParameters/WorkoutParameters';
 import { useFitnessPlan } from '../hooks/useFitnessPlan';
+import { useAuthStore } from '../store/AuthStore';
 
 export interface workoutPreferences {
     goal: string;
@@ -52,14 +53,17 @@ export interface FitnessPlanParameters {
 }
 
 const Actions = ({ workoutPreferences, equipment }: FitnessPlanParameters) => {
-    console.log('workoutPreferences', workoutPreferences);
-    console.log('equipment', equipment);
-
+    const userId = useAuthStore((state) => state.user?.userId) as number;
     const { mutate: generateFitnessPlan } = useFitnessPlan();
+
+    const fitnessParameters: FitnessPlanParameters = {
+        workoutPreferences,
+        equipment,
+    };
 
     const handleFitnessPlanGenerate = () => {
         generateFitnessPlan(
-            { workoutPreferences, equipment },
+            { fitnessParameters, userId },
             {
                 onSuccess: (data) => {
                     console.log('Fitness plan generated:', data);
