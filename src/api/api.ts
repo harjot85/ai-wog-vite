@@ -35,7 +35,6 @@ export const api = {
 };
 
 const parseResponse = async (response: Response) => {
-    console.log('Parsing response:', response);
     const text = await response.text();
     if (!text) return null;
     try {

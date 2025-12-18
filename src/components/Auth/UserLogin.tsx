@@ -4,6 +4,7 @@ import { useUserLogin } from '../../hooks/useUserLogin';
 import { toast } from 'react-toastify';
 import { useUserProfile } from '../../hooks/useUserProfile';
 import Loader from '../../ui/Loader/Loader';
+import { InputText } from '../../ui/Input/Input';
 
 function UserLogin() {
     const [email, setEmail] = useState('');
@@ -40,42 +41,36 @@ function UserLogin() {
                     </h2>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="form-control">
-                            <label className="dui-label p-1">
-                                <span className="dui-label-text text-lg">
-                                    Email
-                                </span>
-                            </label>
-                            <input
-                                type="email"
+                        <div className="form-control flex flex-col gap-2">
+                            <InputText
+                                name="email"
+                                label="Email"
                                 placeholder="Enter your email"
-                                className="dui-input dui-input-lg dui-input-bordered w-full"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
+                                size="lg"
+                                className="text-sm"
+                                onChange={(
+                                    e: React.ChangeEvent<HTMLInputElement>
+                                ) => setEmail(e.target.value)}
                             />
                         </div>
 
-                        <div className="form-control">
-                            <label className="dui-label p-1">
-                                <span className="dui-label-text text-lg">
-                                    Password
-                                </span>
-                            </label>
-                            <input
-                                type="password"
+                        <div className="form-control flex flex-col gap-2">
+                            <InputText
+                                name="password"
+                                label="Password"
                                 placeholder="Enter your password"
-                                className="dui-input dui-input-lg dui-input-bordered w-full"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
+                                size="lg"
+                                className="text-sm"
+                                onChange={(
+                                    e: React.ChangeEvent<HTMLInputElement>
+                                ) => setPassword(e.target.value)}
                             />
                         </div>
 
                         <div className="form-control mt-10">
                             <button
                                 type="submit"
-                                className="dui-btn dui-btn-primary w-full"
+                                className="dui-btn dui-btn-primary w-full rounded-none"
                                 disabled={isPending}
                             >
                                 {isPending ? <Loader /> : 'Login'}

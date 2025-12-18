@@ -32,20 +32,26 @@ function Header() {
                         role="button"
                         className="dui-btn dui-btn-ghost dui-btn-circle dui-avatar "
                     >
-                        <div className="w-10 rounded-full bg-primary-content text-primary flex justify-center items-center text-lg">
+                        <div className="w-10 rounded-full bg-primary-content text-primary text-lg flex justify-center items-center ">
                             {userInitial}
                         </div>
                     </div>
                     <ul
                         tabIndex={-1}
-                        className="dui-menu dui-menu-sm dui-dropdown-content bg-primary text-primary-content dui-rounded-box z-1 mt-3 w-52 p-1 shadow"
+                        className="dui-menu dui-menu-sm dui-dropdown-content bg-primary text-primary-content dui-rounded-none z-1 mt-3 w-52 p-1 shadow text-2xl"
                     >
-                        <li className="hover:bg-base-100 hover:text-base-content rounded-xl ">
-                            <Link to={'/user-profile'}>My Profile</Link>
+                        <li className="hover:bg-base-100 hover:text-base-content rounded-none">
+                            <Link to={'/user-profile'} className="text-lg">
+                                My Profile
+                            </Link>
                         </li>
 
-                        <li className="hover:bg-base-100 hover:text-base-content rounded-xl">
-                            <Link to={'/login'} onClick={handleLogout}>
+                        <li className="hover:bg-base-100 hover:text-base-content rounded-none">
+                            <Link
+                                to={'/login'}
+                                className="text-lg"
+                                onClick={handleLogout}
+                            >
                                 Logout
                             </Link>
                         </li>
