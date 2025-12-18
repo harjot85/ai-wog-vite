@@ -3,12 +3,13 @@ import { Link } from 'react-router';
 import { useUserLogin } from '../../hooks/useUserLogin';
 import { toast } from 'react-toastify';
 import { useUserProfile } from '../../hooks/useUserProfile';
+import Loader from '../../ui/Loader/Loader';
 
 function UserLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { mutate: loginUser } = useUserLogin();
+    const { mutate: loginUser, isPending } = useUserLogin();
     const { mutate: fetchUserProfile } = useUserProfile();
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -75,8 +76,9 @@ function UserLogin() {
                             <button
                                 type="submit"
                                 className="dui-btn dui-btn-primary w-full"
+                                disabled={isPending}
                             >
-                                Login
+                                {isPending ? <Loader /> : 'Login'}
                             </button>
                         </div>
                     </form>

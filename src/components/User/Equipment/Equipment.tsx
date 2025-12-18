@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { InputText } from '../../../ui/Input/input';
 
 interface Equipment {
     setEquipment: (equipment: string[]) => void;
@@ -16,17 +17,13 @@ const Equipment = ({ setEquipment }: Equipment) => {
     }, [equipmentState, setEquipment]);
 
     return (
-        <div className="flex flex-col gap-4 items-center justify-center">
-            <label className="dui-label">
-                <span className="dui-label">
-                    What Equipment do you have? (Separate by comma)
-                </span>
-            </label>
-            <input
+        <div className="flex flex-col gap-4 items-center justify-center w-full max-w-md mx-auto p-4">
+            <InputText
                 name="equipment"
-                type="text"
+                label="What Equipment do you have? (Separate by comma)"
                 placeholder=""
-                className="dui-input"
+                size="lg"
+                className="text-sm"
                 onChange={handleEquipmentChange}
             />
         </div>

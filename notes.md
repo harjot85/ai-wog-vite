@@ -1,7 +1,7 @@
 Next
 ----
 - Revise Statistics - Update, Insert, Fetch, Hydration 
-- Plan Generation
+- Plan Generation - endpoint returns response. catch it, display it, use spinner?
 
 TODOs
 ===================================================

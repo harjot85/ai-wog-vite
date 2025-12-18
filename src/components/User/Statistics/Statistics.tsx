@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useInsertProfile } from '../../../hooks/useInsertProfile';
 import { toast } from 'react-toastify';
 import { useUserProfileStore } from '../../../store/UserProfileStore';
+import { InputNumber, InputText } from '../../../ui/Input/input';
 
 interface StatisticsFormData {
     age: string;
@@ -125,54 +126,35 @@ const Statistics = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-4 items-center justify-center w-full max-w-md mx-auto p-4"
         >
-            <label className="dui-label w-full">
-                <span className="dui-label-text">Your Age</span>
-            </label>
-            <input
+            <InputNumber
                 {...register('age', { required: 'Age is required' })}
-                type="number"
-                placeholder="Enter your age"
-                className="dui-input dui-input-bordered w-full"
-                min="0"
-                max="150"
+                name="age"
+                label="Your Age"
+                placeholder=""
+                size="lg"
+                className="text-sm"
+                error={errors.age}
             />
-            {errors.age && (
-                <span className="text-error text-sm">{errors.age.message}</span>
-            )}
 
-            <label className="dui-label w-full">
-                <span className="dui-label-text">Your Weight (lbs)</span>
-            </label>
-            <input
+            <InputNumber
                 {...register('weight', { required: 'Weight is required' })}
-                type="number"
-                step="0.1"
-                placeholder="Enter Your Weight"
-                className="dui-input dui-input-bordered w-full"
-                min="0"
+                name="weight"
+                label="Your Weight (lbs)"
+                placeholder=""
+                size="lg"
+                className="text-sm"
+                error={errors.weight}
             />
-            {errors.weight && (
-                <span className="text-error text-sm">
-                    {errors.weight.message}
-                </span>
-            )}
 
-            <label className="dui-label w-full">
-                <span className="dui-label-text">Your Height (inches)</span>
-            </label>
-            <input
+            <InputNumber
                 {...register('height', { required: 'Height is required' })}
-                type="number"
-                step="0.1"
-                placeholder="Enter Your Height"
-                className="dui-input dui-input-bordered w-full"
-                min="0"
+                name="height"
+                label="Your Height (inches)"
+                placeholder=""
+                size="lg"
+                className="text-sm"
+                error={errors.height}
             />
-            {errors.height && (
-                <span className="text-error text-sm">
-                    {errors.height.message}
-                </span>
-            )}
 
             <label className="dui-label w-full">
                 <span className="dui-label-text">Your Gender</span>
@@ -259,41 +241,40 @@ const Statistics = () => {
                 />
             </div>
 
-            <label className="dui-label w-full flex flex-col gap-0">
-                <span className="dui-label-text">What is your profession?</span>
-                <span className="text-sm italic text-base-content/70">
-                    (This tells us how active or sedentary your day is)
-                </span>
-            </label>
-            <input
-                {...register('profession')}
-                type="text"
+            <InputText
+                {...register('profession', {
+                    required: 'Profession is required',
+                })}
+                name="profession"
+                label="What is your profession?"
                 placeholder="Enter your profession"
-                className="dui-input dui-input-bordered w-full"
+                size="lg"
+                className="text-sm"
+                error={errors.profession}
             />
 
-            <label className="dui-label w-full">
-                <span className="dui-label-text">
-                    Do you have any chronic physical limitations?
-                </span>
-            </label>
-            <input
-                {...register('physicalLimitations')}
-                type="text"
+            <InputText
+                {...register('physicalLimitations', {
+                    required: 'Physical limitations are required',
+                })}
+                name="physicalLimitations"
+                label="Do you have any chronic physical limitations?"
                 placeholder="Enter your physical limitations"
-                className="dui-input dui-input-bordered w-full"
+                size="lg"
+                className="text-sm"
+                error={errors.physicalLimitations}
             />
 
-            <label className="dui-label w-full">
-                <span className="dui-label-text">
-                    Do you have any medical issues?
-                </span>
-            </label>
-            <input
-                {...register('medicalIssues')}
-                type="text"
-                placeholder="Enter any medical issues"
-                className="dui-input dui-input-bordered w-full"
+            <InputText
+                {...register('medicalIssues', {
+                    required: 'Medical issues are required',
+                })}
+                name="medicalIssues"
+                label="Do you have any medical issues?"
+                placeholder="Enter your medical issues"
+                size="lg"
+                className="text-sm"
+                error={errors.medicalIssues}
             />
 
             <button

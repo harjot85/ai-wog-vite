@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import type { workoutPreferences } from '../../../pages/Home';
+import { InputText } from '../../../ui/Input/input';
+import { Textarea } from '../../../ui/Textarea/Textarea';
 
 interface WorkoutParameterProps {
     setWorkoutPreferences: (preferences: workoutPreferences) => void;
@@ -48,53 +50,38 @@ const WorkoutParameters = ({
 
     return (
         // TODO: Breakdown the goals into smaller questions like PTs do in that form
-        <div className="flex flex-col gap-4 items-center justify-center">
-            <label className="dui-label">
-                <span className="dui-label">
-                    What is your most important Goal at this time?
-                </span>
-            </label>
-            <textarea
+        <div className="flex flex-col gap-4 items-center justify-center w-full max-w-md mx-auto p-4">
+            <Textarea
                 name="goals"
+                label="What is your most important Goal at this time?"
                 placeholder=""
-                className="dui-textarea "
+                size="lg"
+                className="text-sm"
                 onChange={handleGoalChange}
             />
 
-            <label className="dui-label">
-                <span className="dui-label">
-                    How many days can you realistically commit each week?
-                </span>
-            </label>
-            <input
+            <InputText
                 name="daysperweek"
+                label="How many days can you realistically commit each week?"
                 placeholder=""
-                className="dui-input"
+                size="lg"
+                className="text-sm"
                 onChange={handleDaysPerWeekChange}
             />
-
-            <label className="dui-label">
-                <span className="dui-label">
-                    Preferred workout duration (in minutes)
-                </span>
-            </label>
-            <input
+            <InputText
                 name="minsperworkout"
+                label="Preferred workout duration (in minutes)"
                 placeholder=""
-                className="dui-input "
+                size="lg"
+                className="text-sm"
                 onChange={handleWorkoutDurationChange}
             />
-
-            <label className="dui-label">
-                <span className="dui-label">
-                    Tell us what type of exercises you like to do?
-                </span>
-            </label>
-            <input
+            <InputText
                 name="exercisePreferences"
-                type="text"
+                label=" Tell us what type of exercises you like to do?"
                 placeholder="Enter your exercise preferences"
-                className="dui-input"
+                size="lg"
+                className="text-sm"
                 onChange={handleExercisePreferencesChange}
             />
         </div>
