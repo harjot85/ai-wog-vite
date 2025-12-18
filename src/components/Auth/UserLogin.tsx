@@ -4,7 +4,7 @@ import { useUserLogin } from '../../hooks/useUserLogin';
 import { toast } from 'react-toastify';
 import { useUserProfile } from '../../hooks/useUserProfile';
 import Loader from '../../ui/Loader/Loader';
-import { InputText } from '../../ui/Input/Input';
+import { InputPassword, InputText } from '../../ui/Input/Input';
 
 function UserLogin() {
     const [email, setEmail] = useState('');
@@ -55,7 +55,7 @@ function UserLogin() {
                         </div>
 
                         <div className="form-control flex flex-col gap-2">
-                            <InputText
+                            <InputPassword
                                 name="password"
                                 label="Password"
                                 placeholder="Enter your password"

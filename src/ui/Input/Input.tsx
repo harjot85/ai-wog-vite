@@ -35,6 +35,31 @@ export const InputText = ({
     );
 };
 
+export const InputPassword = ({
+    name,
+    className,
+    label,
+    placeholder,
+    onChange,
+    size,
+}: InputProps) => {
+    const classNames = `w-full dui-input rounded-none dui-input-${size} ${className}`;
+    return (
+        <>
+            <label className="w-full dui-label">
+                <span className="dui-label">{label}</span>
+            </label>
+            <input
+                name={name}
+                type={'password'}
+                className={classNames}
+                placeholder={placeholder}
+                onChange={onChange}
+            />
+        </>
+    );
+};
+
 export const InputNumber = ({
     name,
     className,
