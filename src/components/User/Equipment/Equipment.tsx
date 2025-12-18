@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { InputText } from '../../../ui/Input/input';
+import { InputText } from '../../../ui/Input/Input';
 
 interface Equipment {
     setEquipment: (equipment: string[]) => void;

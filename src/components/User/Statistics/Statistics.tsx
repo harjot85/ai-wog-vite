@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useInsertProfile } from '../../../hooks/useInsertProfile';
 import { toast } from 'react-toastify';
 import { useUserProfileStore } from '../../../store/UserProfileStore';
-import { InputNumber, InputText } from '../../../ui/Input/input';
+import { InputNumber, InputText } from '../../../ui/Input/Input';
 
 interface StatisticsFormData {
     age: string;

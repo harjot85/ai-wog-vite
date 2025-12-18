@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { workoutPreferences } from '../../../pages/Home';
-import { InputText } from '../../../ui/Input/input';
+import { InputText } from '../../../ui/Input/Input';
 import { Textarea } from '../../../ui/Textarea/Textarea';
 
 interface WorkoutParameterProps {
