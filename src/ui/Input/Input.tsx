@@ -17,7 +17,8 @@ export const InputText = ({
     placeholder,
     onChange,
     size,
-}: InputProps) => {
+    ...rest
+}: InputProps & Record<string, any>) => {
     const classNames = `w-full dui-input rounded-none dui-input-${size} ${className}`;
     return (
         <>
@@ -30,6 +31,7 @@ export const InputText = ({
                 className={classNames}
                 placeholder={placeholder}
                 onChange={onChange}
+                {...rest}
             />
         </>
     );
