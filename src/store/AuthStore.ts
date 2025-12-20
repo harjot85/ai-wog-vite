@@ -1,17 +1,14 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { useUserProfileStore } from './UserProfileStore';
-
-interface User {
-    userId: number;
-}
+import type { LoginResponse } from '../hooks/useUserLogin';
 
 interface AuthState {
-    user: User | null;
+    user: LoginResponse | null;
     isAuthenticated: boolean;
 
     // Actions
-    login: (user: User) => void;
+    login: (user: LoginResponse) => void;
     logout: () => void;
 }
 
@@ -23,7 +20,7 @@ export const useAuthStore = create<AuthState>()(
 
             login: (user) =>
                 set({
-                    user,
+                    user: user as LoginResponse,
                     isAuthenticated: true,
                 }),
 

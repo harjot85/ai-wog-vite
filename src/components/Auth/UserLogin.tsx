@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
-import { useUserLogin } from '../../hooks/useUserLogin';
+import { useUserLogin, type LoginResponse } from '../../hooks/useUserLogin';
 import { toast } from 'react-toastify';
 import { useUserProfile } from '../../hooks/useUserProfile';
 import Loader from '../../ui/Loader/Loader';
@@ -21,8 +21,8 @@ function UserLogin() {
             {
                 // When login succeeds, this callback gets the "data" returned from our login API.
                 // "data" is what was returned from the server in response to `/api/v1/auth/login`.
-                onSuccess: (data) => {
-                    fetchUserProfile(Number(data.userId));
+                onSuccess: (data: LoginResponse) => {
+                    fetchUserProfile(Number(data.user.id));
                 },
                 onError: (error) => {
                     console.error('Login failed', error);

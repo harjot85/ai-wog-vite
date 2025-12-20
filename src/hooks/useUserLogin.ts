@@ -8,6 +8,16 @@ interface userLoginRequest {
     password: string;
 }
 
+interface UserDto {
+    email: string;
+    fullName: string;
+    id: number;
+}
+export interface LoginResponse {
+    user: UserDto;
+    token: string;
+    expiryInMinutes: number;
+}
 export const useUserLogin = () => {
     const navigate = useNavigate();
     const login = useAuthStore((state) => state.login);
@@ -15,8 +25,8 @@ export const useUserLogin = () => {
     return useMutation({
         mutationFn: (data: userLoginRequest) =>
             api.post('/api/v1/auth/login', data),
-        onSuccess: (data) => {
-            login(data);
+        onSuccess: (data: LoginResponse) => {
+            login(data as LoginResponse);
             navigate('/home');
         },
     });
