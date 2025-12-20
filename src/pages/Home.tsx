@@ -53,7 +53,7 @@ export interface FitnessPlanParameters {
 }
 
 const Actions = ({ workoutPreferences, equipment }: FitnessPlanParameters) => {
-    const userId = useAuthStore((state) => state.user?.userId) as number;
+    const userId = useAuthStore((state) => state.user?.user?.id) as number;
     const { mutate: generateFitnessPlan } = useFitnessPlan();
 
     const fitnessParameters: FitnessPlanParameters = {
